@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Liascope - Your sun your scope</title>
+    <script src="https://unpkg.com/@astrodraw/astrochart"></script>
+    <script src="/cusps/astronomy.js"></script>
+    <script src="/cusps/cuspcal.js"></script>
+    <script src="/cusps/geodata.js"></script>
+    <script src="/cusps/hekichan.js"></script>
+    <script src="/cusps/math.js"></script>
+    <script src="/cusps/metako.js"></script>
+    <script src="/cusps/pluto.js"></script>
+
+    <script type="module" defer src="view.js"></script>
+    <script type="module" defer src="controller.js"></script>
+    <script type="module" defer src="model.js"></script>
+    <script type="module" defer src="helpers.js"></script>
+    <script type="module" defer src="config.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Liascope</h1>
+      <h2>your sun your scope</h2>
+      <div class="introText">
+        <div class="introTexth">A quick & precise way to get an insight of the most important astrological charts of your scope.</div>
+        <div class="introInfo">
+          <ul>
+            <li>
+              <h3>Natal Chart</h3>
+              Shows the planetary positions at the time of your birth; provides deep insight into your personality, strengths, weaknesses, and life
+              tasks. With this horoscope, you can learn more about your fundamental astrological influences and how they shape your life.
+            </li>
+            <li>
+              <h3>Transit Chart</h3>
+              Shows how the current planetary movements influence your birth chart and allows you to understand the ongoing astrological influences on
+              your life, including challenges and opportunities arising from the positions of the planets.
+            </li>
+            <li>
+              <h3>Progressed Chart</h3>
+              Is a tool to track the development of your astrological influences over time. It shows how your personal development and external
+              circumstances change based on the ongoing movement of the planets. Ideal for recognizing long-term trends and life phases.
+            </li>
+          </ul>
+          <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Username" />
+            <label for="birthDate">Birth Date:</label>
+            <input type="date" id="birthDate" required />
+            <label for="birthTime">Birth Time:</label>
+            <input type="time" id="birthTime" />
+            <label>
+              <input type="checkbox" id="birthTimeUnknown" />
+              Time Unknown
+            </label>
+            <label for="birthPlace">Birth Place:</label>
+            <input type="text" id="birthPlace" placeholder="City" required />
+            <label> House System: </label>
+            <select class="birthSystemSelector">
+              <option value="1">Placidus</option>
+              <option value="2">Campanus</option>
+              <option value="3">Regiomontanus</option>
+              <option value="4">Koch</option>
+              <option value="5">Topocentric</option>
+              <option value="6">Axial Rotation</option>
+              <option value="7">Morinus</option>
+            </select>
+            <button id="getHoroscope">Show Charts</button>
+          </div>
+          <div class="containerT hidden"></div>
+          <div class="errorDiv"></div>
+          <ul>
+            <li>
+              <h3>Draconic Chart</h3>
+              Provides deep insight into your karmic pattern and soul plan. It reveals which themes from past lives or spiritual dimensions are
+              influencing your present life. It’s useful for understanding spiritual and karmic lessons.
+            </li>
+            <li>
+              <h3>Perfection Chart</h3>
+              Focuses on your current year and the area of your life that is most strongly influenced. It is used to identify which themes and life
+              areas are coming to the forefront, based on the annual progression of the natal chart.
+            </li>
+            <li>
+              <h3>Aspects & Planetary Configurations</h3>
+              In the aspects and planetary configurations, you can see the key connections between the planets and how they shape your experiences and
+              challenges. It helps you understand how different energies interact in your life and which special aspects influence your horoscope.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="loaderCont hidden">
+      <div class="rot">
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <div class="infoBox hidden">
+      <div class="informationBox">
+        <h2>Liascope - your sun your scope.</h2>
+        Liascope is an astrological app for astrology interested people who wants to gain an initial insight into their personal horoscope. It
+        displays key astrological elements such as planets, houses, and aspects. Chiron and asteroids are not included. Liascope uses the True Lilith
+        and the True Lunar Node.
+
+        <h3>Natal Chart</h3>
+        Shows the planetary positions at the time of your birth; provides deep insight into your personality, strengths, weaknesses, and life tasks.
+        With this horoscope, you can learn more about your fundamental astrological influences and how they shape your life.
+
+        <h3>Transit Chart</h3>
+        Shows how the current planetary movements influence your birth chart and allows you to understand the ongoing astrological influences on your
+        life, including challenges and opportunities arising from the positions of the planets.
+
+        <h3>Progressed Chart</h3>
+        Is a tool to track the development of your astrological influences over time. It shows how your personal development and external
+        circumstances change based on the ongoing movement of the planets. Ideal for recognizing long-term trends and life phases.
+
+        <h3>Draconic Chart</h3>
+        Provides deep insight into your karmic pattern and soul plan. It reveals which themes from past lives or spiritual dimensions are influencing
+        your present life. It’s useful for understanding spiritual and karmic lessons.
+
+        <h3>Annual Perfection Chart</h3>
+        Focuses on your current year and the area of your life that is most strongly influenced. It is used to identify which themes and life areas
+        are coming to the forefront, based on the annual progression of the natal chart.
+
+        <h3>Aspects & Planetary</h3>
+        In the aspects and planetary tables, you can see the key connections between the planets and how they shape your experiences and challenges.
+        It helps you understand how different energies interact in your life and which special aspects influence your horoscope.
+
+        <h3>Aspects & Planetary Configurations</h3>
+        In the aspects and planetary configurations, you can see the key connections between the planets and how they shape your experiences and
+        challenges. It helps you understand how different energies interact in your life and which special aspects influence your horoscope.
+
+        <h3>Aspects & Planetary Configurations</h3>
+        In the aspects and planetary configurations, you can see the key connections between the planets and how they shape your experiences and
+        challenges. It helps you understand how different energies interact in your life and which special aspects influence your horoscope.
+        <p>
+          Liascope is for informational and entertainment purposes only. <br />
+          © 2025 Liascope | Developed & Created with ✨ by Zeliha Akin. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+    <div class="staticArea hidden">
+      <div>
+        <ul class="natalDate">
+          Natal Date
+        </ul>
+        <div class="editBtn natalBtn">Edit Natal</div>
+      </div>
+      <span class="infoBtn">i</span>
+      <div>
+        <ul class="transitDate">
+          Transit Date
+        </ul>
+        <div class="editBtn transitBtn">Edit Transit</div>
+      </div>
+    </div>
+    <div class="operations hidden">
+      <div class="operations__tab-container tabBirthChart">
+        <button class="btn operations__tab operations__tab--1 operations__tab--active" data-tab="1">Natal Chart</button>
+        <button class="btn operations__tab operations__tab--2" data-tab="2">Natal & Transit</button>
+        <button class="btn operations__tab operations__tab--3" data-tab="3">Transit</button>
+        <button class="btn operations__tab operations__tab--4" data-tab="4">Progression</button>
+        <button class="btn operations__tab operations__tab--5" data-tab="5">Draconic</button>
+        <button class="btn operations__tab operations__tab--6" data-tab="6">ann. Perfection</button>
+      </div>
+      <div class="operations__content operations__content--1 operations__content--active">
+        <div class="intro--1"></div>
+        <div id="paper--1"></div>
+        <div id="tableCont--1">
+          <table id="table--1"></table>
+        </div>
+      </div>
+
+      <div class="operations__content operations__content--2">
+        <div class="intro--2"></div>
+        <div id="paper--2"></div>
+        <table class="dataTable"></table>
+        <table id="table--2"></table>
+      </div>
+
+      <div class="operations__content operations__content--3">
+        <div class="intro--3"></div>
+        <div id="paper--3"></div>
+        <div id="tableCont--3">
+          <table id="table--3"></table>
+        </div>
+      </div>
+
+      <div class="operations__content operations__content--4">
+        <div id="paper--4"></div>
+        <div id="tableCont--4">
+          <table id="table--4"></table>
+        </div>
+      </div>
+
+      <div class="operations__content operations__content--5">
+        <div id="paper--5"></div>
+        <div id="tableCont--5">
+          <table id="table--5"></table>
+        </div>
+      </div>
+      <div class="operations__content operations__content--6">
+        <div id="paper--6">
+          <div class="perfectionArea"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>© 2025 Liascope | Developed & Created with ✨ by Zeliha Akin. All rights reserved.</footer>
+  </body>
+</html>
