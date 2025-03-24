@@ -3,6 +3,8 @@ import View from "./view.js";
 import { chart, draconic, horary, natalTransit, perfection, progression} from "./config.js";
 import { findSign, mergeRetroList } from "./helpers.js";
 import view from "./view.js";
+import 'core-js'
+import 'regenerator-runtime'
 
 const controlUpdateState = async function () {
   try {

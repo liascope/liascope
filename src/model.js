@@ -2,7 +2,8 @@
 
 import { FORMAT, ASPECTS, perfectionDegrees, zodiac } from "./config.js";
 import { fetchCityCoordinates, fetchTimezoneData, findSign, findPlanetHouses, asiaTimeZone, requestForRetro } from "./helpers.js";
-
+import 'core-js'
+import 'regenerator-runtime'
 
 export let state = {
   // User:

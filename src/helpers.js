@@ -1,5 +1,7 @@
 import { zodiac, getLink, userName, apiKey } from "./config.js";
 // Helper functions to send a POST request
+import 'core-js'
+import 'regenerator-runtime'
 
 const fetchData = async (url, errorMessage) => {
   try {

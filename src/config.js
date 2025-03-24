@@ -1,5 +1,7 @@
 // config.js
 // import { astrochart } from "@astrodraw/astrochart";
+import 'core-js'
+import 'regenerator-runtime'
 
 export const getLink = {
   geoUrl: "https://nominatim.openstreetmap.org/search?format=json&q=",
