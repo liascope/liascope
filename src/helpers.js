@@ -22,7 +22,7 @@ export const fetchCityCoordinates = async (cityName) => {
 };
 
 export const fetchTimezoneData = async (lat, lon) => {
-  const url = `https://api.timezonedb.com/v2.1/get-time-zone?key=${timeApiKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
+  const url = `${getLink.timezoneUrl}key=${timeApiKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
 
   // `${getLink.timezoneUrl}lat=${lat}&lng=${lon}&username=${userName}`;
   return await fetchData(url, "Timezone data not found");

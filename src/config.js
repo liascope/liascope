@@ -5,7 +5,8 @@ import 'regenerator-runtime'
 
 export const getLink = {
   geoUrl: "https://nominatim.openstreetmap.org/search?format=json&q=",
-  timezoneUrl:  "http://api.geonames.org/timezoneJSON?",
+  timezoneUrl: "https://api.timezonedb.com/v2.1/get-time-zone?",
+  //  "http://api.geonames.org/timezoneJSON?",
   retroUrl: "https://json.freeastrologyapi.com/planets/extended",
   // "https://json.freeastrologyapi.com/western/planets",
 };
