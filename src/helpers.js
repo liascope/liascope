@@ -1,4 +1,4 @@
-import { zodiac, getLink, userName, apiKey } from "./config.js";
+import { zodiac, getLink, userName, apiKey, timeApiKey } from "./config.js";
 // Helper functions to send a POST request
 import 'core-js'
 import 'regenerator-runtime'
@@ -22,7 +22,9 @@ export const fetchCityCoordinates = async (cityName) => {
 };
 
 export const fetchTimezoneData = async (lat, lon) => {
-  const url = `${getLink.timezoneUrl}${lat}&lng=${lon}&username=${userName}`;
+  const url = `https://api.timezonedb.com/v2.1/get-time-zone?key=${timeApiKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
+
+  // `${getLink.timezoneUrl}lat=${lat}&lng=${lon}&username=${userName}`;
   return await fetchData(url, "Timezone data not found");
 };
 export const asiaTimeZone = (zT) => zT.clone().tz("Asia/Tokyo");

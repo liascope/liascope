@@ -5,12 +5,13 @@ import 'regenerator-runtime'
 
 export const getLink = {
   geoUrl: "https://nominatim.openstreetmap.org/search?format=json&q=",
-  timezoneUrl: "https://api.geonames.org/timezoneJSON?lat=",
+  timezoneUrl:  "http://api.geonames.org/timezoneJSON?",
   retroUrl: "https://json.freeastrologyapi.com/planets/extended",
   // "https://json.freeastrologyapi.com/western/planets",
 };
 export const userName = "liapi";
 export const apiKey = "E6MLa6nzuP2e0iSnYAUzG1qfRqhudWQ882nFqvdF";
+export const timeApiKey = "1SIV2C3L0GHD";
 export const FORMAT = "DD.MM.YYYY HH:mm";
 export const maxRows = 15;
 export const defaultTime = "12:00";

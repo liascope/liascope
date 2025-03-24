@@ -219,7 +219,8 @@ export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, 
     const lon = geoData[0].lon;
     // get time zone info of city
     const timezoneData = await fetchTimezoneData(lat, lon);
-    const zoneID = timezoneData.timezoneId; // e.g. "Europe/Berlin"
+    // const zoneID = timezoneData.timezoneId; // e.g. "Europe/Berlin"
+    const zoneID = timezoneData.zoneName;
     const zoneTime = moment.tz(dateString, FORMAT, zoneID);
     // Japanese standart time (JST)
     const jstTime = asiaTimeZone(zoneTime);
