@@ -12,7 +12,7 @@ html {
   left: -2rem;
   top: 0;
   width: fit-content;
-  /* scale: 0.8; */
+  scale: 0.8;
 }
 
 .perfectionDescription {

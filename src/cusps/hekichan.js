@@ -1,36 +1,7 @@
-/*
- * “V‘ÌˆÊ’uŒvŽZƒGƒ“ƒWƒ“u‚Í‚¢‚Ï[‚Ö‚«‚¿‚á‚ñv version 1.00-j04
- * Copyright (c) 1999-2004, 2017, 2021 Yoshihiro Sakai & Sakai Institute of Astrology
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- *
- * This library uses simplified VSOP87-D, ELP2000-82B, PLUTO-95 developed by
- * Bureau des Longitudes, French. This library valids 1700-2100 Common Era.
- * 2000/03/19[h02] ˆê‰žA‘æ‚PŽŸŒõs·‚ÆÍ“®‚Ì•â³‚ð“ü‚ê‚Æ‚¢‚½B
- * 2000/07/09[h03] Ô“¹À•WŒn‚Ö‚Ì•ÏŠ·‚ð—eˆÕ‚É‚·‚é‚½‚ßƒtƒ‹ƒZƒbƒg‚Å•Ô‚·‚æ‚¤‚É‚µ‚½B
- * 2000/09/25[h04] ƒm[ƒh‚ÆƒŠƒŠƒX‚ÌŒvŽZ–@‚ð‚Æ‚ ‚é˜_•¶‚ÉŠî‚Ã‚«•ÏXB
- * 2001/03/18[h05] Œ´‘¥‚Æ‚µ‚Ä–»‰¤¯‚ÍAstronomical Algorithms•ûŽ®‚ÅŒvŽZ‚·‚éB
- * 2001/04/23[h06] “V‘ÌˆÊ’uŒvŽZ‚ÌŽdŠ|‚¯‚ð‚¿‚å‚±‚Á‚Æ•ÏX
- * 2001/07/09[h07] Œõs·‚ÌŒvŽZ•ûŽ®‚ð•ÏX
- * 2001/07/13[h08] ŒŽ‚ÌŒvŽZ‚ðƒpƒ[ƒAƒbƒvI
- * 2002/09/14[h09] ‘¾—z‚ÆŒŽ‚Ì‘¬“x‚ÌŒvŽZŽ®‚ð’Ç‰Á
- * 2003/01/01[h10] ‚È‚º‚©“ü‚Á‚Ä‚¢‚½‚ ‚Ù‚ÈƒoƒO‚ðœ‹ŽB
- * 2003/01/16[h11] ‚È‚º‚©“ü‚Á‚Ä‚¢‚½‚ ‚Ù‚ÈƒoƒO‚ð‚³‚ç‚Éœ‹ŽB
- * 2003/08/29[h12] ‰©“¹ŒXŽÎŠp‚ªŠÔˆá‚Á‚Ä‚Ü‚µ‚½B
- * 2004/01/09[h13] ƒ‹ƒi[ƒŠƒ^[ƒ“‚ðŒvŽZ‚·‚éŠÖ”‚ð’Ç‰ÁB
- * 2004/01/11[h14] ƒ\[ƒ‰[ƒŠƒ^[ƒ“ŠÖ”‚ð’Ç‰ÁA‰©“¹ŒXŽÎŠp‚ÆÍ“®‚ð•ª—£B
- * 2004/01/11[h15] 1700`2100”NˆÈŠO‚Ì–»‰¤¯‚ð‹O“¹—v‘f‚ÅŒvŽZ‚·‚é‚æ‚¤‚É‚µ‚½B
- * 2017/04/27[j01] JavaScript‚ÉˆÚAB
- * 2017/05/25[j02] –»‰¤¯‚Ì‹O“¹—v‘f‚ð•ÊƒƒWƒbƒN‚É“ü‚ê‘Ö‚¦B
- * 2017/06/05[j03] ‹O“¹—v‘f‚Uƒpƒ‰”Å‚É‘Î‰ž
- * 2017/08/07[j04] –»‰¤¯‚ÌŒvŽZŽ®‚ª‚¨‚©‚µ‚È‚±‚Æ‚É‚È‚Á‚Ä‚¢‚½B‚Â‚¢‚Å‚Éj02Žæ‚èÁ‚µ
- * 2021/02/27[j05] –»‰¤¯‚Ì‹O“¹—v‘fŒvŽZŽ®‚ðŒ©’¼‚µ
- */
 
-// –»‰¤¯‚Ì1700`2100”NˆÈŠO‚ÌŠúŠÔ‚Ì‹O“¹—v‘f‘I‘ðƒtƒ‰ƒO
 var jplMode = 1;
 
-// “V‘ÌˆÊ’u‚ð”z—ñ‚Å•Ô‚·“Š‡ŠÖ”
+
 function calPlanetPosition( ye, mo, da, ho, mi, pid ){
 	var coor = new Array( 2 );
 	coor = findPlaceCoor( pid );
@@ -86,12 +57,12 @@ function calPlanetPosition2( ye, mo, da, ho, mi, lon, lat ){
 	return plapos;
 }
 
-// Še“V‘Ì‚Ì‰©ŒoŒvŽZ^JD‚Í’n‹…—ÍŠwŽžŠî€
+// ï¿½eï¿½Vï¿½Ì‚Ì‰ï¿½ï¿½oï¿½vï¿½Zï¿½^JDï¿½Í’nï¿½ï¿½ï¿½ÍŠwï¿½ï¿½ï¿½î€
 function calPlaPos( JD, pid ){
 	var T  = ( JD - 2451545.0 ) /  36525.0;
 	var T2 = ( JD - 2451545.0 ) / 365250.0;
 
-// Œõs·’è”
+// ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½è”
 	var C = [0.00347, 0.00484, 0.00700, 0.01298, 0.01756, 0.02490, 0.03121, 0.03461];
 	var dl;
 	var epos = new Array(3);
@@ -99,9 +70,9 @@ function calPlaPos( JD, pid ){
 	var ppos = new Array(3);
 
 	epos = calPositSO( T2 );
-	if( pid == 1 ){ // ŒvŽZ–Ú•W‚ª‘¾—z‚Ìê‡
+	if( pid == 1 ){ // ï¿½vï¿½Zï¿½Ú•Wï¿½ï¿½ï¿½ï¿½ï¿½zï¿½Ìê‡
 		gpos[ 0 ] = epos[ 0 ] - 0.005693 / epos[ 2 ];
-	} else if( pid == 2 ){ // ŒvŽZ–Ú•W‚ªŒŽ‚Ìê‡
+	} else if( pid == 2 ){ // ï¿½vï¿½Zï¿½Ú•Wï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
 		gpos = calPositMO(T);
 	} else {
 		switch( pid ){
@@ -132,7 +103,7 @@ function calPlaPos( JD, pid ){
 				} else { // Pluto_obspm valids thru -3000 - 3000, but intentionally uses to 0 - 4000
 					ppos = calPositPL_obspm( T );
 				}
-				ppos[ 0 ] += 5029.0966 / 3600.0 * T;  // üŒ^‹ßŽ—‚ÌÎ·•â³‚·‚é
+				ppos[ 0 ] += 5029.0966 / 3600.0 * T;  // ï¿½ï¿½ï¿½^ï¿½ßŽï¿½ï¿½ÌÎï¿½ï¿½â³ï¿½ï¿½ï¿½ï¿½
 				break;
 		}
 		gpos = convertGeocentric( epos, ppos );
@@ -144,7 +115,7 @@ function calPlaPos( JD, pid ){
 	return gpos[ 0 ];
 }
 
-// Še—v‘f‚ÌŒvŽZ
+// ï¿½eï¿½vï¿½fï¿½ÌŒvï¿½Z
 function calVsopTerm( T, term ){
 	var res = 0.0;
 
@@ -858,7 +829,7 @@ function calPositPL_obspm( T ) {
 	return orbitWork( ...orbitalElements );
 }
 
-// ‘¾—z‚ÆŒŽ‚Ì‘¬“x
+// ï¿½ï¿½ï¿½zï¿½ÆŒï¿½ï¿½Ì‘ï¿½ï¿½x
 function calSolarVelocity( JD ){
 	var T = ( JD - 2451545.0 ) / 365250.0;
 	var vel  = 3548.330;
@@ -922,7 +893,7 @@ function calLunarVelocity( JD ){
 	return vel;
 }
 
-// ƒm[ƒhAƒŠƒŠƒX
+// ï¿½mï¿½[ï¿½hï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½X
 // This function from "Numerical expressions for precession formulae
 // and mean elements for the Moon and the planets" J. L. Simon, et al.,
 // Astron. Astrophys., 282, 663-683(1994).
@@ -939,7 +910,7 @@ function calPositLuna( JD ){
 	l   = mod360(134.9634114 + 13.06499295 * d + 0.0089970278 * T * T);
 	l1  = mod360(357.5291092 +  0.98560028 * d - 0.0001536667 * T * T);
 
-// ƒm[ƒh•â³
+// ï¿½mï¿½[ï¿½hï¿½â³
 	DH  = omg;
 	DH -= 1.4978 * sin4deg(2.0 * (D - F));
 	DH -= 0.1500 * sin4deg(l1);
@@ -948,7 +919,7 @@ function calPositLuna( JD ){
 	DH -= 0.0800 * sin4deg(2.0 * (l - F));
 	DH  = mod360(DH);
 
-// ƒŠƒŠƒX•â³
+// ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½â³
 	LT  = opi + 180.0;
 	LT -= 15.4469 * sin4deg(2.0 * D - l);
 	LT -=  9.6419 * sin4deg(2.0 * (D - l));
@@ -970,9 +941,9 @@ function calPositLuna( JD ){
 	return luna;
 }
 
-// ASCEMCŒvŽZ
+// ASCï¿½EMCï¿½vï¿½Z
 function calGeoPoint( lst, la, obl ){
-	// MCŒvŽZ
+	// MCï¿½vï¿½Z
 	var MCx = sin4deg(lst);
 	var MCy = cos4deg(lst) * cos4deg(obl);
 	var MC  = mod360( Math.atan2( MCx, MCy ) / deg2rad );
@@ -980,7 +951,7 @@ function calGeoPoint( lst, la, obl ){
 		MC += 360.0;
 	}
 
-	// ASCŒvŽZ
+	// ASCï¿½vï¿½Z
 	var ASCx  = cos4deg(lst);
 	var ASCy  = -(sin4deg(obl) * tan4deg(la));
 	    ASCy -= cos4deg(obl) * sin4deg(lst);
@@ -992,65 +963,3 @@ function calGeoPoint( lst, la, obl ){
 	var res = new Array( ASC, MC );
 	return res;
 }
-
-/* ---- “––Ê‚Íƒ\[ƒ‰[ƒŠƒ^[ƒ“Aƒ‹ƒi[ƒŠƒ^[ƒ“‚ÍŽg‚í‚È‚¢BŽg‚¤Žž‚É•œŠˆ‚³‚¹‚é
-///// Return ŒvŽZŠÖ”
-// Solar Return
-function calAfterSolarReturn{
-	my($nSu, $date0) = @_;
-	my($tJD0) = CalJD(DecodeDate($date0), 0, 0);
-	$tJD0 += CorrectTDT($tJD0);
-	my($tJD) = $tJD0;
-	my($delta, $tSu, $vSu, $bSu, $rSu);
-	my($eps) = 1.0 / 1440.0;
-	my($isFirst) = 1;
-
-	do{
-		if(!$isFirst){
-			$tJD += 365.24219;
-		} else {
-			$isFirst = 0;
-		}
-		do{
-			($tSu, $bSu, $rSu) = CalPositSO(($tJD - 2451545.0) / 365250.0);
-			$tSu += CalNutation($JD) / 3600.0;
-			$tSu -= 0.005693 / $rSu;
-			$vSu = CalSolarVelocity($tJD);
-			$delta = angle1($tSu, $nSu) / $vSu;
-			$tJD -= $delta;
-		}while(abs($delta) > $eps);
-	}while($tJD < $tJD0);
-
-	$tJD -= CorrectTDT($tJD);
-	CnvCalendar($tJD + 9.0 / 24.0);
-}
-
-// Lunar Return
-function calAfterLunarReturn{
-	my($nMo, $date0) = @_;
-	my($tJD0) = CalJD(DecodeDate($date0), 0, 0);
-	$tJD0 += CorrectTDT($tJD0);
-	my($tJD) = $tJD0;
-	my($delta, $tMo, $vMo, $bMo);
-	my($eps) = 1.0 / 1440.0;
-	my($isFirst) = 1;
-
-	do{
-		if(!$isFirst){
-			$tJD += 27.321582;
-		} else {
-			$isFirst = 0;
-		}
-		do{
-			($tMo, $bMo) = CalPositMO(($tJD - 2451545.0) / 36525.0);
-			$tMo += CalNutation($JD) / 3600.0;
-			$vMo = CalLunarVelocity($tJD);
-			$delta = angle1($tMo, $nMo) / $vMo;
-			$tJD -= $delta;
-		}while(abs($delta) > $eps);
-	}while($tJD < $tJD0);
-
-	$tJD -= CorrectTDT($tJD);
-	CnvCalendar($tJD + 9.0 / 24.0);
-}
-*/

@@ -1,5 +1,5 @@
 /*
- * ŒoˆÜ“xƒf[ƒ^ƒtƒ@ƒCƒ‹B‚»‚ê‚¾‚¯B
+ * ï¿½oï¿½Ü“xï¿½fï¿½[ï¿½^ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ê‚¾ï¿½ï¿½ï¿½B
  * Copyright (c) 1999-2001, 2017 Yoshihiro Sakai & Sakai Institute of Astrology
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
@@ -32,18 +32,18 @@ function findPlaceCoor( pid ){
 	return coor;
 }
 
-function nvPrefName( pid ){
-	if((pid < 1) || (pid > 47)) pid = 48;
+function nvPrefName(pid) {
+    if ((pid < 1) || (pid > 47)) pid = 48;
 
-	var npref = ["",
-		"–kŠC“¹", "ÂXŒ§", "ŠâèŒ§", "‹{éŒ§", "H“cŒ§", "RŒ`Œ§",
-		"•Ÿ“‡Œ§", "ˆïéŒ§", "“È–ØŒ§", "ŒQ”nŒ§", "é‹ÊŒ§", "ç—tŒ§",
-		"“Œ‹“s", "_“ŞìŒ§", "VŠƒŒ§", "•xRŒ§", "ÎìŒ§", "•ŸˆäŒ§",
-		"R—œŒ§", "’·–ìŒ§", "Šò•ŒŒ§", "Ã‰ªŒ§", "ˆ¤’mŒ§", "OdŒ§",
-		" ‰êŒ§", "‹“s•{", "‘åã•{", "•ºŒÉŒ§", "“Ş—ÇŒ§", "˜a‰ÌRŒ§",
-		"’¹æŒ§", "“‡ªŒ§", "‰ªRŒ§", "L“‡Œ§", "RŒûŒ§", "“¿“‡Œ§",
-		"ìŒ§", "ˆ¤•QŒ§", "‚’mŒ§", "•Ÿ‰ªŒ§", "²‰êŒ§", "’·èŒ§",
-		"ŒF–{Œ§", "‘å•ªŒ§", "‹{èŒ§", "­™“‡Œ§", "‰«“êŒ§", "‚»‚Ì‘¼EŠCŠO"];
+    var npref = ["",
+        "Hokkaido", "Aomori", "Iwate", "Miyagi", "Akita", "Yamagata",
+        "Fukushima", "Ibaraki", "Tochigi", "Gunma", "Saitama", "Chiba",
+        "Tokyo", "Kanagawa", "Niigata", "Toyama", "Ishikawa", "Fukui",
+        "Yamanashi", "Nagano", "Gifu", "Shizuoka", "Aichi", "Mie",
+        "Shiga", "Kyoto", "Osaka", "Hyogo", "Nara", "Wakayama",
+        "Tottori", "Shimane", "Okayama", "Hiroshima", "Yamaguchi", "Tokushima",
+        "Kagawa", "Ehime", "Kochi", "Fukuoka", "Saga", "Nagasaki",
+        "Kumamoto", "Oita", "Miyazaki", "Kagoshima", "Okinawa", "Other/Overseas"];
 
-	return npref[pid];
+    return npref[pid];
 }

@@ -202,7 +202,8 @@ export const generateComparisonTable = function (natalData, transitData, unknown
 };
 
 export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, uT = false) {
-  try {
+  try { let planetPosition = new Array();
+     let cuspLongitudes = new Array();
     const geoData = await fetchCityCoordinates(cityName);
     if (geoData.length === 0) {
       throw new Error("City not found");
@@ -227,8 +228,8 @@ export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, 
     const hour = jstTime.hour();
     const minute = jstTime.minute();
     // data for Chart
-    const planetPosition = calPlanetPosition2(+year, +month, +day, +hour, +minute, +lon, +lat);
-    const cuspLongitudes = calHouseCusp2(
+     planetPosition = calPlanetPosition2(+year, +month, +day, +hour, +minute, +lon, +lat);
+    cuspLongitudes = calHouseCusp2(
       +year,
       +month,
       +day,

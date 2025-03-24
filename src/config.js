@@ -9,8 +9,6 @@ export const getLink = {
 };
 export const userName = "liapi";
 export const apiKey = "E6MLa6nzuP2e0iSnYAUzG1qfRqhudWQ882nFqvdF";
-export let planetPosition = new Array();
-export let cuspLongitudes = new Array();
 export const FORMAT = "DD.MM.YYYY HH:mm";
 export const maxRows = 15;
 export const defaultTime = "12:00";

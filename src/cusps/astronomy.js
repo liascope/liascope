@@ -1,14 +1,14 @@
 /*
- * “V•¶ŒvZŠÖŒWƒXƒNƒŠƒvƒg version 0.18j at 2021/02/27
+ * ï¿½Vï¿½ï¿½ï¿½vï¿½Zï¿½ÖŒWï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½g version 0.18j at 2021/02/27
  * Copyright (c) 1999-2001, 2004, 2005, 2017, 2021 Yoshihiro Sakai & Sakai Institute of Astrology
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
- * 2017/06/05[0.16j] ‹O“¹—v‘f‚Uƒpƒ‰”Å‚É‘Î‰
- * 2017/09/15[0.17j] ƒ¢‚s‚ÌŒvZ®‚ğŒ©’¼‚·‚Â‚¢‚Å‚Éo“T‚ğ‘‚­
- * 2021/02/27[0.18j] “ñ‘Ì–â‘è‚Ü‚í‚èƒƒWƒbƒNŒ©’¼‚µ
+ * 2017/06/05[0.16j] ï¿½Oï¿½ï¿½ï¿½vï¿½fï¿½Uï¿½pï¿½ï¿½ï¿½Å‚É‘Î‰ï¿½
+ * 2017/09/15[0.17j] ï¿½ï¿½ï¿½sï¿½ÌŒvï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½Å‚Éoï¿½Tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 2021/02/27[0.18j] ï¿½ï¿½Ì–ï¿½ï¿½Ü‚ï¿½èƒï¿½Wï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
-// ƒOƒŒƒSƒŠƒI—ïê—pI
+// ï¿½Oï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½pï¿½I
 function cnvCalendar( JD ){
 	JD += 0.5;
 	var Z = Math.floor( JD );
@@ -39,8 +39,8 @@ function cnvCalendar( JD ){
 	return res;
 }
 
-// ‚»‚Ì“ú‚Ìƒ†ƒŠƒEƒX“ú‚ğŒvZ‚·‚é
-function calJD(ye, mo, da, ho, mi){ // À”‘Ìã
+// ï¿½ï¿½ï¿½Ì“ï¿½ï¿½Ìƒï¿½ï¿½ï¿½ï¿½Eï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½
+function calJD(ye, mo, da, ho, mi){ // ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½
 	var y0 = (mo > 2) ? ye : (ye -  1);
 	var m0 = (mo > 2) ? mo : (mo + 12);
 	var JD = Math.floor(365.25 * y0) + Math.floor(y0 / 400) - Math.floor(y0 / 100);
@@ -50,7 +50,7 @@ function calJD(ye, mo, da, ho, mi){ // À”‘Ìã
 	return JD;
 }
 
-function cnvJDr( JD ){ // À”‘Ì¨®”ŠÂ
+function cnvJDr( JD ){ // ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	var date = cnvCalendar(JD);
 	var ye = date[ 0 ];
 	var mo = date[ 1 ];
@@ -60,7 +60,7 @@ function cnvJDr( JD ){ // À”‘Ì¨®”ŠÂ
 	return JDz;
 }
 
-function calJDz(year, month, day){ // ®”ŠÂã
+function calJDz(year, month, day){ // ï¿½ï¿½ï¿½ï¿½ï¿½Âï¿½
 	var yt = year;
 	var mt = month;
 	var dt = day;
@@ -77,7 +77,7 @@ function calJDz(year, month, day){ // ®”ŠÂã
 	return JD;
 }
 
-// d, T‚ğ”z—ñ‚Å•Ô‚·B
+// d, Tï¿½ï¿½zï¿½ï¿½Å•Ô‚ï¿½ï¿½B
 function calTimeCoefficient( JD ){
 	var d = JD - 2451545.0;
 	var T = d / 36525.0;
@@ -86,7 +86,7 @@ function calTimeCoefficient( JD ){
 	return coef;
 }
 
-// ‹O“¹—v‘f‚Uƒpƒ‰”Å¨’Êí‚Ì‹O“¹—v‘f
+// ï¿½Oï¿½ï¿½ï¿½vï¿½fï¿½Uï¿½pï¿½ï¿½ï¿½Åï¿½ï¿½Êï¿½Ì‹Oï¿½ï¿½ï¿½vï¿½f
 // a : semi-major axis (au).
 // l : mean longitude (degree).
 // h : e * sin(pi).
@@ -109,7 +109,7 @@ function convertOrbitalElement( a, l, h, k, p, q ) {
 	return result;
 }
 
-// ‚Ü‚Æ‚ß‚Ä‹O“¹ŒvZB•Ô’l‚Íi‰©ŒoA‰©ˆÜA“®ŒajB
+// ï¿½Ü‚Æ‚ß‚Ä‹Oï¿½ï¿½ï¿½vï¿½Zï¿½Bï¿½Ô’lï¿½Íiï¿½ï¿½ï¿½oï¿½Aï¿½ï¿½ï¿½ÜAï¿½ï¿½ï¿½aï¿½jï¿½B
 function orbitWork(L, opi, omg, i, e, a){
 	var M = mod360(L - opi);
 	var E = mod360(solveKepler(M, e));
@@ -131,7 +131,7 @@ function orbitWork(L, opi, omg, i, e, a){
 	return res;
 }
 
-// Kepler•û’ö®(M = E - e sinE)‚ğ‰ğ‚­B
+// Keplerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(M = E - e sinE)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 function solveKepler(M, e){
 	var Mr = M * deg2rad;
 	var Er = Mr;
@@ -143,7 +143,7 @@ function solveKepler(M, e){
 	return Er / deg2rad;
 }
 
-// “úSˆÊ’u‚©‚ç’nSˆÊ’u‚ÖƒRƒ“ƒo[ƒg‚µA’nS‰©Œo‚ğ•Ô‚·B
+// ï¿½ï¿½ï¿½Sï¿½Ê’uï¿½ï¿½ï¿½ï¿½nï¿½Sï¿½Ê’uï¿½ÖƒRï¿½ï¿½ï¿½oï¿½[ï¿½gï¿½ï¿½ï¿½Aï¿½nï¿½Sï¿½ï¿½ï¿½oï¿½ï¿½Ô‚ï¿½ï¿½B
 function convertGeocentric( earthCoor, planetCoor ){
 	var lp, bp, rp, ls, bs, rs;
 
@@ -175,7 +175,7 @@ function convertGeocentric( earthCoor, planetCoor ){
 	return res;
 }
 
-// ‰©“¹À•WŒn‚©‚çÔ“¹À•WŒn‚Ö•ÏŠ·‚·‚éB
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½nï¿½ï¿½ï¿½ï¿½Ô“ï¿½ï¿½ï¿½ï¿½Wï¿½nï¿½Ö•ÏŠï¿½ï¿½ï¿½ï¿½ï¿½B
 function convertEquatorial(lon, lat, obl){
 	var xs = cos4deg(lon) * cos4deg(lat);
 	var ys = sin4deg(lon) * cos4deg(lat);
@@ -193,7 +193,7 @@ function convertEquatorial(lon, lat, obl){
 	return res;
 }
 
-// Î·•â³
+// ï¿½Îï¿½ï¿½â³
 function coordinateConvertFromJ2000( arg ){
 	var zeta, zz, theta;
 	var x, y, z, xd, yd, zd, xs, ys, zs;
@@ -228,19 +228,19 @@ function coordinateConvertFromJ2000( arg ){
 	return res;
 }
 
-// ’n•ûP¯ŒvZ
+// ï¿½nï¿½ï¿½ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Z
 function calLST(JD, ho, mi, lo){
 	var JD0 = Math.floor(JD - 0.5) + 0.5;
 	var T = (JD0 - 2451545.0) / 36525.0;
 	var UT = (JD - JD0) * 360.0 * 1.002737909350795;
 	if( UT < 0 ) UT += 360.0;
 
-	//ƒOƒŠƒjƒbƒWP¯ŒvZ
+	//ï¿½Oï¿½ï¿½ï¿½jï¿½bï¿½Wï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Z
 	var GST  = 0.279057273 + 100.0021390378 * T + 1.077591667e-06 * T * T;
 	    GST  = GST - Math.floor(GST);
 	    GST *= 360.0;
 
-	// ’n•ûP¯ŒvZ{Í“®•â³
+	// ï¿½nï¿½ï¿½ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Zï¿½{ï¿½Í“ï¿½ï¿½â³
 	var LST = mod360(GST + UT + lo);
 	var dpsi = calNutation(JD);
 	var eps  = calOblique(JD);
@@ -250,7 +250,7 @@ function calLST(JD, ho, mi, lo){
 	return LST;
 }
 
-// ‰©“¹ŒXÎŠp‚ğŒvZ‚·‚éŠÖ”
+// ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ÎŠpï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½Öï¿½
 function calOblique(JD ){
 	var T = (JD - 2451545.0) / 36525.0;
 	var Omg = mod360(125.00452 - T *   1934.136261);
@@ -266,7 +266,7 @@ function calOblique(JD ){
 	return (e + deps) / 3600.0;
 }
 
-// Í“®‚ğŒvZ‚·‚éŠÖ”iŠÈ—ª”Åj
+// ï¿½Í“ï¿½ï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½Öï¿½ï¿½iï¿½È—ï¿½ï¿½Åj
 function calNutation( JD ){
 	var T = (JD - 2451545.0) / 36525.0;
 
@@ -282,7 +282,7 @@ function calNutation( JD ){
 	return dpsi;
 }
 
-// ‹Ï·‚ğŒvZ‚·‚éŠÖ”
+// ï¿½Ïï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½Öï¿½
 function calEqT( JD ){
 	var  T = ( JD - 2451545.0 ) / 36525.0;
 
@@ -311,7 +311,7 @@ function calEqT( JD ){
 
 ////////////////////////////////
 
-// ƒJƒŒƒ“ƒ_[ŠÖŒWB
+// ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½[ï¿½ÖŒWï¿½B
 function calDayOfWeek(year, month, day){
 	var JD = calJDz(year, month, day);
 	var you = (JD + 1) % 7;
@@ -338,10 +338,9 @@ function maxday(year, month){
 	return md;
 }
 
-// ƒ¢‚s‚ğŠÇ—‚·‚éŠÖ”
 // formula A : Notes Scientifiques et Techniques du Bureau des Longitudes, nr. S055
 // from ftp://cyrano-se.obspm.fr/pub/6_documents/4_lunar_tables/newexp.pdf
-// formula B : Polynomial Expressions for Delta T (ƒ¢T)
+// formula B : Polynomial Expressions for Delta T (ï¿½ï¿½T)
 // from https://eclipse.gsfc.nasa.gov/SEhelp/deltatpoly2004.html
 // formula C : Delta T : Polynomial Approximation of Time Period 1620-2013
 // from https://www.hindawi.com/archive/2014/480964/ (license: CC-BY-3.0)

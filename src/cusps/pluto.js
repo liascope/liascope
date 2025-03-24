@@ -1,13 +1,3 @@
-/* 
- *!/usr/local/bin/perl
- *“V‘ÌˆÊ’uŒvZƒGƒ“ƒWƒ“u‚Í‚¢‚Ï[‚Ö‚«‚¿‚á‚ñv–»‰¤¯ŒvZƒ‹[ƒ`ƒ“
- * Copyright (c) 1999-2001, 2017 Yoshihiro Sakai & Sakai Institute of Astrology
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- *
- *This library uses simplified VSOP87-D, ELP2000-82B, PLUTO-95 developed by
- *Bureau des Longitudes, French. This library valids 1700-2100 Common Era.
- */
 
 function calPositPL_bdl( JD ){
 	var tdeb = 2341972.5;
@@ -22,7 +12,7 @@ function calPositPL_bdl( JD ){
 	var E  = new Array();
 	var nf = new Array(82, 19, 5);
 
-// secular terms --- ‘½€®€
+
 	var ax = new Array( 98083308510.0, -1465718392.0, 11528487809.0,  55397965917.0);
 	var ay = new Array(101846243715.0,       57789.0, -5487929294.0,   8520205290.0);
 	var az = new Array(  2183700004.0,   433209785.0, -4911803413.0, -14029741184.0);
@@ -240,7 +230,7 @@ function calPositPL_bdl( JD ){
                 33.0,-11127973411.0,  -1310869292.0,     -164753.0,
               -107.0,         284.0);
 
-// €‚ÌŒvZ
+// ï¿½ï¿½ï¿½ÌŒvï¿½Z
 // secular terms
 	for(i = 3;i >= 0;i--){
 		v[1] = v[1] * x + ax[i];
@@ -279,7 +269,7 @@ function calPositPL_bdl( JD ){
 		v[i] /= 1.0e10;
 	}
 
-// À•W•ÏŠ·
+// ï¿½ï¿½ï¿½Wï¿½ÏŠï¿½
 	var obl = 23.439291 - 0.0130125 * T;
 
 	E[1] = 1.0 * v[1];

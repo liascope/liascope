@@ -1,37 +1,26 @@
-/*
- * è¯pŒvZƒGƒ“ƒWƒ“u‚ß‚½‚±v version 0.20j at 2017/04/30, 2017/05/05
- * Copyright (c) 1999-2001, 2003, 2004, 2017 Yoshihiro Sakai & Sakai Institute of Astrology
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- */
 
 var planame = ["",
-    "‘¾—z", "Œ",   "…¯",   "‹à¯",   "‰Î¯",
-    "–Ø¯", "“y¯", "“V‰¤¯", "ŠC‰¤¯", "–»‰¤¯",
-	"ƒm[ƒh", "ƒŠƒŠƒX", "ã¸“_", "“ì’†“_",
-	"ƒZƒŒƒX", "ƒpƒ‰ƒX", "ƒWƒ…ƒm[", "ƒxƒXƒ^", "ƒLƒ[ƒ“",
-	"ƒLƒ…[ƒsƒbƒh", "ƒnƒfƒX", "ƒ[ƒEƒX", "ƒNƒƒmƒX",
-	"ƒAƒ|ƒƒ“", "ƒAƒhƒƒgƒX", "ƒoƒ‹ƒJƒkƒX", "ƒ|ƒZƒCƒhƒ“"];
+    "Sun", "Moon", "Mercury", "Venus", "Mars",
+    "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto",
+    "Node", "Lilith", "Ascendant", "Midheaven",
+    "Ceres", "Pallas", "Juno", "Vesta", "Chiron",
+    "Cupid", "Hades", "Zeus", "Chronos",
+    "Apollo", "Admetos", "Vulcanus", "Poseidon"];
+
 var planame6 = ["",
-    "‘¾—z@", "Œ@@", "…¯@", "‹à¯@", "‰Î¯@",
-    "–Ø¯@", "“y¯@", "“V‰¤¯", "ŠC‰¤¯", "–»‰¤¯",
-	"ƒm[ƒh", "ƒŠƒŠƒX", "ã¸“_", "“ì’†“_",
-	"ƒZƒŒƒX", "ƒpƒ‰ƒX", "ƒWƒ…ƒm", "ƒxƒXƒ^", "ƒLƒƒ“",
-	"ƒNƒsƒh", "ƒnƒfƒX", "ƒ[ƒEƒX", "ƒNƒƒm",
-	"ƒAƒ|ƒ", "ƒAƒhƒ", "ƒoƒ‹ƒJ", "ƒ|ƒZƒC"];
+    "Sun", "Moon", "Mercury", "Venus", "Mars",
+    "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto",
+    "Node", "Lilith", "Ascendant", "Midheaven",
+    "Ceres", "Pallas", "Juno", "Vesta", "Chiron",
+    "Cupid", "Hades", "Zeus", "Chronos",
+    "Apollo", "Admetos", "Vulcan", "Poseidon"];
+
 var sgnname = [
-    "‰²—rÀ", "‰²‹À", "‘oqÀ", "ŠI@À", "‚qÀ", "‰³—À",
-    "“V”‰À", "å¶@À", "ËèÀ", "R—rÀ", "…•rÀ", "‹›@À"];
-var sgnS = ["—r", "‹", "‘o", "ŠI", "‚", "‰³", "”‰", "å¶", "Ë", "R", "•r", "‹›"];
+    "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+    "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
 
-function convertPlanetHouse( pla, csp ){
-	var hse = new Array();
-	for(var i = 1; i < 14; i++ ){
-		hse[i] = convertPlanetHouse0( pla[i], csp );
-	}
+var sgnS = ["Ar", "Ta", "Ge", "Ca", "Le", "Vi", "Li", "Sc", "Sg", "Cp", "Aq", "Pi"];
 
-	return hse;
-}
 
 function CnvPlanetHouse0( pos, csp){
 	var cusp0 = 0.0;
@@ -51,9 +40,7 @@ function CnvPlanetHouse0( pos, csp){
 	return hse;
 }
 
-// ----------------------------------
 
-//—£ŠpŒvZiƒAƒXƒyƒNƒgƒ^ƒCƒvj
 function angle(obj1, obj2){
     var dist = obj2 - obj1;
     var ang  = acos4deg(cos4deg(dist));
@@ -73,7 +60,6 @@ function angle1(obj, csp){
 	return ang;
 }
 
-// Šp“x·¨ƒAƒXƒyƒNƒg•ÏŠ·
 function checkAspect(ang, deforb){
 	var asp = checkAspectStrictly(ang, deforb, 0.0);
 	var asptype = asp[ 0 ];
@@ -110,7 +96,7 @@ function checkAspectStrictly(asp, orb1, orb2){
 	return result;
 }
 
-// ‘OH@Œã‚ëH
+
 function ChkPos(to, from){
 	var diff = to - from;
 	if(diff >= +180.0) diff -= 360.0;
@@ -119,7 +105,7 @@ function ChkPos(to, from){
 	return diff;
 }
 
-// ‹ts’†H
+
 function checkRetrograde(ye, mo, da, ho, mi){
 	var pos0 = calPlanetPosition(ye, mo, da, ho, mi - 1, 48);
 	var pos1 = calPlanetPosition(ye, mo, da, ho, mi + 1, 48);
@@ -134,7 +120,7 @@ function checkRetrograde(ye, mo, da, ho, mi){
 	return ret;
 }
 
-//â‘Î“x”¨ƒTƒCƒ“•ÏŠ·
+//ï¿½ï¿½Î“xï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½Cï¿½ï¿½ï¿½ÏŠï¿½
 function cnvSign( adeg ){
 	adeg = mod360(adeg);
 	var sgn = Math.floor(adeg / 30.0);
@@ -142,16 +128,16 @@ function cnvSign( adeg ){
 	return sgn;
 }
 
-// â‘Î“x”¨ƒTƒCƒ“•¶š—ñ•ÏŠ·
+// ï¿½ï¿½Î“xï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏŠï¿½
 function cnv2kanji( adeg ){
 	adeg = mod360(adeg);
 	var sgn = Math.floor(adeg / 30.0);
 	var deg = sprintf("%2d", Math.floor(adeg - sgn * 30.0));
 	var min = sprintf("%02d", Math.floor((adeg - (sgn * 30 + deg)) * 60.0));
-	return sprintf( "%s%2d“x%02d•ª", sgnname[ sgn ], deg, min );
+	return sprintf( "%s%2dï¿½x%02dï¿½ï¿½", sgnname[ sgn ], deg, min );
 }
 
-// â‘Î“x”¨ƒTƒCƒ“•¶š—ñ•ÏŠ·
+// ï¿½ï¿½Î“xï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏŠï¿½
 function cnv2knj( adeg ){
 		adeg = mod360(adeg);
 		var sgn = Math.floor(adeg / 30.0);
@@ -160,7 +146,7 @@ function cnv2knj( adeg ){
 		return sprintf( "%2d%s%02d", deg, sgnS[sgn], min );
 }
 
-// “V‘Ì‚h‚c¨‹L†
+// ï¿½Vï¿½Ì‚hï¿½cï¿½ï¿½ï¿½Lï¿½ï¿½
 function cnv2glyphP( pid ){
 	var str;
 	var strPlanet = new Array("As", "Mc");
@@ -180,7 +166,7 @@ function cnv2glyphP( pid ){
 	return str;
 }
 
-// â‘Î“x”¨ƒTƒCƒ“‹L†—ñ•ÏŠ·
+// ï¿½ï¿½Î“xï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½Cï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½ÏŠï¿½
 function cnv2glyph( adeg ){
 	var gadr0 = "<img src=\"";
 	var gadr1 = "../image/astropict/sign/s";
@@ -198,7 +184,7 @@ function cnv2glyph( adeg ){
 	return str;
 }
 
-// â‘Î“x”¨ƒAƒXƒyƒNƒg‹L†—ñ•ÏŠ·
+// ï¿½ï¿½Î“xï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Xï¿½yï¿½Nï¿½gï¿½Lï¿½ï¿½ï¿½ï¿½ÏŠï¿½
 function asp2glyph( asp, orb1, orb2 ){
 	var str;
 	var gadr0 = "<img src=\"../image/astropict/aspect/a";

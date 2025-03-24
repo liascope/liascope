@@ -1,6 +1,6 @@
 import * as model from "./model.js";
 import View from "./view.js";
-import { chart, draconic, horary, natalTransit, perfection, progression, userName } from "./config.js";
+import { chart, draconic, horary, natalTransit, perfection, progression} from "./config.js";
 import { findSign, mergeRetroList } from "./helpers.js";
 import view from "./view.js";
 
