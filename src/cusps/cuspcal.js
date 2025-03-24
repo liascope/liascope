@@ -1,9 +1,3 @@
-/*
- * ÉnÉEÉXÉJÉXÉvåvéZÉãÅ[É`Éì
- * Copyright (c) 1999-2001, 2017 Yoshihiro Sakai & Sakai Institute of Astrology
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- */
 
 // House Cusp Calculating subroutine
 function calHouseCusp(ye, mo, da, ho, mi, pid){
@@ -15,7 +9,7 @@ function calHouseCusp(ye, mo, da, ho, mi, pid){
 	return cusp;
 }
 
-function calHouseCusp2(ye, mo, da, ho, mi, Lon, Lat, htype){
+const calHouseCusp2 = function (ye, mo, da, ho, mi, Lon, Lat, htype){
 	var cusp = new Array();
 	var JD  = calJD(ye, mo, da, ho, mi);
 	var lst = calLST(JD, ho, mi, Lon);
@@ -50,7 +44,7 @@ function calHouseCusp2(ye, mo, da, ho, mi, Lon, Lat, htype){
 
 // for Koch & Topocentric House System
 function calAsc(lst, lat, obl){
-	// ASCåvéZ
+	// ASCÔøΩvÔøΩZ
 	var ASCx = cos4deg(lst);
 	var ASCy = -(sin4deg(obl) * tan4deg(lat));
 	ASCy    -= cos4deg(obl) * sin4deg(lst);

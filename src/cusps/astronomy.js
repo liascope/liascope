@@ -1,14 +1,4 @@
-/*
- * �V���v�Z�֌W�X�N���v�g version 0.18j at 2021/02/27
- * Copyright (c) 1999-2001, 2004, 2005, 2017, 2021 Yoshihiro Sakai & Sakai Institute of Astrology
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- * 2017/06/05[0.16j] �O���v�f�U�p���łɑΉ�
- * 2017/09/15[0.17j] ���s�̌v�Z�������������łɏo�T������
- * 2021/02/27[0.18j] ��̖��܂�胍�W�b�N������
- */
 
-// �O���S���I���p�I
 function cnvCalendar( JD ){
 	JD += 0.5;
 	var Z = Math.floor( JD );
@@ -86,7 +76,6 @@ function calTimeCoefficient( JD ){
 	return coef;
 }
 
-// �O���v�f�U�p���Ł��ʏ�̋O���v�f
 // a : semi-major axis (au).
 // l : mean longitude (degree).
 // h : e * sin(pi).
@@ -109,7 +98,7 @@ function convertOrbitalElement( a, l, h, k, p, q ) {
 	return result;
 }
 
-// �܂Ƃ߂ċO���v�Z�B�Ԓl�́i���o�A���܁A���a�j�B
+
 function orbitWork(L, opi, omg, i, e, a){
 	var M = mod360(L - opi);
 	var E = mod360(solveKepler(M, e));
@@ -228,19 +217,18 @@ function coordinateConvertFromJ2000( arg ){
 	return res;
 }
 
-// �n���P�����v�Z
+
 function calLST(JD, ho, mi, lo){
 	var JD0 = Math.floor(JD - 0.5) + 0.5;
 	var T = (JD0 - 2451545.0) / 36525.0;
 	var UT = (JD - JD0) * 360.0 * 1.002737909350795;
 	if( UT < 0 ) UT += 360.0;
 
-	//�O���j�b�W�P�����v�Z
 	var GST  = 0.279057273 + 100.0021390378 * T + 1.077591667e-06 * T * T;
 	    GST  = GST - Math.floor(GST);
 	    GST *= 360.0;
 
-	// �n���P�����v�Z�{�͓��␳
+
 	var LST = mod360(GST + UT + lo);
 	var dpsi = calNutation(JD);
 	var eps  = calOblique(JD);
@@ -250,7 +238,7 @@ function calLST(JD, ho, mi, lo){
 	return LST;
 }
 
-// �����X�Ίp���v�Z����֐�
+
 function calOblique(JD ){
 	var T = (JD - 2451545.0) / 36525.0;
 	var Omg = mod360(125.00452 - T *   1934.136261);
@@ -266,7 +254,7 @@ function calOblique(JD ){
 	return (e + deps) / 3600.0;
 }
 
-// �͓����v�Z����֐��i�ȗ��Łj
+
 function calNutation( JD ){
 	var T = (JD - 2451545.0) / 36525.0;
 
@@ -311,7 +299,6 @@ function calEqT( JD ){
 
 ////////////////////////////////
 
-// �J�����_�[�֌W�B
 function calDayOfWeek(year, month, day){
 	var JD = calJDz(year, month, day);
 	var you = (JD + 1) % 7;
@@ -338,12 +325,6 @@ function maxday(year, month){
 	return md;
 }
 
-// formula A : Notes Scientifiques et Techniques du Bureau des Longitudes, nr. S055
-// from ftp://cyrano-se.obspm.fr/pub/6_documents/4_lunar_tables/newexp.pdf
-// formula B : Polynomial Expressions for Delta T (��T)
-// from https://eclipse.gsfc.nasa.gov/SEhelp/deltatpoly2004.html
-// formula C : Delta T : Polynomial Approximation of Time Period 1620-2013
-// from https://www.hindawi.com/archive/2014/480964/ (license: CC-BY-3.0)
 function correctTDT(JD){
 	var year = ( JD - 2451545.0 ) / 365.2425 + 2000.0;
 	var t, dt;

@@ -1,0 +1,26 @@
+{
+  "name": "liascope",
+  "version": "1.0.0",
+  "description": "A quick & precise way to get an insight of the most important astrological charts of your scope.",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [
+    "Astrology",
+    "Natal",
+    "Chart",
+    "Transit",
+    "Chart",
+    "Horoscope"
+  ],
+  "author": "Zelia A.",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.14.2"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.48"
+  }
+}

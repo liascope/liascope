@@ -14,7 +14,7 @@ function calPlanetPosition( ye, mo, da, ho, mi, pid ){
 	return res;
 }
 
-function calPlanetPosition2( ye, mo, da, ho, mi, lon, lat ){
+const calPlanetPosition2 = function ( ye, mo, da, ho, mi, lon, lat ){
 	var i;
 
 	var JD   = calJD( ye, mo, da, ho, mi );
@@ -57,12 +57,11 @@ function calPlanetPosition2( ye, mo, da, ho, mi, lon, lat ){
 	return plapos;
 }
 
-// �e�V�̂̉��o�v�Z�^JD�͒n���͊w���
+
 function calPlaPos( JD, pid ){
 	var T  = ( JD - 2451545.0 ) /  36525.0;
 	var T2 = ( JD - 2451545.0 ) / 365250.0;
 
-// ���s���萔
 	var C = [0.00347, 0.00484, 0.00700, 0.01298, 0.01756, 0.02490, 0.03121, 0.03461];
 	var dl;
 	var epos = new Array(3);
@@ -829,7 +828,6 @@ function calPositPL_obspm( T ) {
 	return orbitWork( ...orbitalElements );
 }
 
-// ���z�ƌ��̑��x
 function calSolarVelocity( JD ){
 	var T = ( JD - 2451545.0 ) / 365250.0;
 	var vel  = 3548.330;
@@ -893,10 +891,7 @@ function calLunarVelocity( JD ){
 	return vel;
 }
 
-// �m�[�h�A�����X
-// This function from "Numerical expressions for precession formulae
-// and mean elements for the Moon and the planets" J. L. Simon, et al.,
-// Astron. Astrophys., 282, 663-683(1994).
+
 function calPositLuna( JD ){
 	var d = JD - 2451545.0;
 	var T =  d / 36525.0;
@@ -910,7 +905,7 @@ function calPositLuna( JD ){
 	l   = mod360(134.9634114 + 13.06499295 * d + 0.0089970278 * T * T);
 	l1  = mod360(357.5291092 +  0.98560028 * d - 0.0001536667 * T * T);
 
-// �m�[�h�␳
+
 	DH  = omg;
 	DH -= 1.4978 * sin4deg(2.0 * (D - F));
 	DH -= 0.1500 * sin4deg(l1);
@@ -919,7 +914,7 @@ function calPositLuna( JD ){
 	DH -= 0.0800 * sin4deg(2.0 * (l - F));
 	DH  = mod360(DH);
 
-// �����X�␳
+
 	LT  = opi + 180.0;
 	LT -= 15.4469 * sin4deg(2.0 * D - l);
 	LT -=  9.6419 * sin4deg(2.0 * (D - l));
@@ -951,7 +946,6 @@ function calGeoPoint( lst, la, obl ){
 		MC += 360.0;
 	}
 
-	// ASC�v�Z
 	var ASCx  = cos4deg(lst);
 	var ASCy  = -(sin4deg(obl) * tan4deg(la));
 	    ASCy -= cos4deg(obl) * sin4deg(lst);

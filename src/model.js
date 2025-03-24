@@ -1,6 +1,8 @@
-import moment from "https://cdn.skypack.dev/moment-timezone";
+// import moment from "https://cdn.skypack.dev/moment-timezone";
+
 import { FORMAT, ASPECTS, perfectionDegrees, zodiac } from "./config.js";
 import { fetchCityCoordinates, fetchTimezoneData, findSign, findPlanetHouses, asiaTimeZone, requestForRetro } from "./helpers.js";
+
 
 export let state = {
   // User:
@@ -200,7 +202,7 @@ export const generateComparisonTable = function (natalData, transitData, unknown
       NH2: unknownTime[0] ? "" : getHouse(cuspsNatal, planetsTransit[planet][0]),
     }));
 };
-
+import moment from 'moment-timezone'
 export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, uT = false) {
   try { let planetPosition = new Array();
      let cuspLongitudes = new Array();

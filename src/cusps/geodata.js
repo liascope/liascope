@@ -1,9 +1,3 @@
-/*
- * �o�ܓx�f�[�^�t�@�C���B���ꂾ���B
- * Copyright (c) 1999-2001, 2017 Yoshihiro Sakai & Sakai Institute of Astrology
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- */
 
 function findPlaceCoor( pid ){
 	if((pid < 1) || (pid > 47)) pid = 48;

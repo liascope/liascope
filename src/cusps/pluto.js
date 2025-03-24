@@ -230,8 +230,7 @@ function calPositPL_bdl( JD ){
                 33.0,-11127973411.0,  -1310869292.0,     -164753.0,
               -107.0,         284.0);
 
-// ���̌v�Z
-// secular terms
+
 	for(i = 3;i >= 0;i--){
 		v[1] = v[1] * x + ax[i];
 		v[2] = v[2] * x + ay[i];
@@ -269,7 +268,6 @@ function calPositPL_bdl( JD ){
 		v[i] /= 1.0e10;
 	}
 
-// ���W�ϊ�
 	var obl = 23.439291 - 0.0130125 * T;
 
 	E[1] = 1.0 * v[1];
@@ -284,5 +282,5 @@ function calPositPL_bdl( JD ){
 	var res = [lo, bo, ro];
 	return res;
 }
-
 1;
+

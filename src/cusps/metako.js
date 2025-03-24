@@ -120,7 +120,7 @@ function checkRetrograde(ye, mo, da, ho, mi){
 	return ret;
 }
 
-//��Γx�����T�C���ϊ�
+
 function cnvSign( adeg ){
 	adeg = mod360(adeg);
 	var sgn = Math.floor(adeg / 30.0);
@@ -128,7 +128,7 @@ function cnvSign( adeg ){
 	return sgn;
 }
 
-// ��Γx�����T�C��������ϊ�
+
 function cnv2kanji( adeg ){
 	adeg = mod360(adeg);
 	var sgn = Math.floor(adeg / 30.0);
@@ -137,7 +137,7 @@ function cnv2kanji( adeg ){
 	return sprintf( "%s%2d�x%02d��", sgnname[ sgn ], deg, min );
 }
 
-// ��Γx�����T�C��������ϊ�
+
 function cnv2knj( adeg ){
 		adeg = mod360(adeg);
 		var sgn = Math.floor(adeg / 30.0);
@@ -146,7 +146,7 @@ function cnv2knj( adeg ){
 		return sprintf( "%2d%s%02d", deg, sgnS[sgn], min );
 }
 
-// �V�̂h�c���L��
+
 function cnv2glyphP( pid ){
 	var str;
 	var strPlanet = new Array("As", "Mc");
@@ -166,7 +166,7 @@ function cnv2glyphP( pid ){
 	return str;
 }
 
-// ��Γx�����T�C���L����ϊ�
+
 function cnv2glyph( adeg ){
 	var gadr0 = "<img src=\"";
 	var gadr1 = "../image/astropict/sign/s";
@@ -184,7 +184,7 @@ function cnv2glyph( adeg ){
 	return str;
 }
 
-// ��Γx�����A�X�y�N�g�L����ϊ�
+
 function asp2glyph( asp, orb1, orb2 ){
 	var str;
 	var gadr0 = "<img src=\"../image/astropict/aspect/a";
