@@ -334,7 +334,7 @@ class View {
     // prettier-ignore
     const listTable = ` <ul class="planetList ${uT ? "shiftUp" : ""}"> ${uT? arrPlanetSigns.map((p) => 
                        `<li>${p[0]}<span class="zodiacSymbol">${p[1]}</span></li>` // [0] = sign, [1] = symbol, [2]= house number
-              ).join(""): arrPlanetSigns.map((p) => `<li><span>${p[0]}</span><span class="zodiacSymbol">${p[1]} </span> <span>${p[2]}.House</span></li>`).join("")}
+              ).join(""): arrPlanetSigns.map((p) => `<li><span>${p[0]}</span><span class="zodiacSymbol">${p[1]} </span> <span>${p[0] === 'Mc' ? '10' : p[0] === 'As' ? '1': p[2]}.House</span></li>`).join("")}
                        </ul>`;
     parentContainer.insertAdjacentHTML("beforeend", list);
     parentTable.insertAdjacentHTML("beforeend", listTable);
