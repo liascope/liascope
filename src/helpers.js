@@ -1,7 +1,7 @@
 import { zodiac, getLink, userName, apiKey, timeApiKey } from "./config.js";
 // Helper functions to send a POST request
-import 'core-js'
-import 'regenerator-runtime'
+// import "core-js";
+// import "regenerator-runtime";
 
 const fetchData = async (url, errorMessage) => {
   try {
@@ -29,7 +29,7 @@ export const fetchTimezoneData = async (lat, lon) => {
 };
 export const asiaTimeZone = (zT) => zT.clone().tz("Asia/Tokyo");
 
-export const requestForRetro = async (requestBody, retries = 3, delay = 1000) => {
+export const requestForRetro = async (requestBody, retries = 3, delay = 15000) => {
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
@@ -39,7 +39,8 @@ export const requestForRetro = async (requestBody, retries = 3, delay = 1000) =>
           "Content-Type": "application/json",
           "x-api-key": apiKey,
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify(requestBody, null, 2),
+        // JSON.stringify(requestBody),
       });
       if (response.status === 429 && attempt < retries) {
         console.warn(`API Limit erreicht, neuer Versuch in ${delay / 2000} Sekunden...`);
@@ -48,12 +49,14 @@ export const requestForRetro = async (requestBody, retries = 3, delay = 1000) =>
         continue;
       }
       if (!response.ok) {
-        throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+        const errorText = await response.text(); // << NEU
+        throw new Error(`API Error: ${response.status} - ${errorText}`);
+        // throw new Error(`API Error: ${response.status} - ${response.statusText}`);
       }
 
       return await response.json();
     } catch (error) {
-      console.error(`Fehler (Versuch ${attempt}/${retries}):`, error);
+      console.log(`Fehler (Versuch ${attempt}/${retries}):`, error);
       if (attempt === retries) throw error;
     }
   }

@@ -1,9 +1,9 @@
 // import moment from "https://cdn.skypack.dev/moment-timezone";
-
+// import moment from "moment-timezone";
 import { FORMAT, ASPECTS, perfectionDegrees, zodiac } from "./config.js";
 import { fetchCityCoordinates, fetchTimezoneData, findSign, findPlanetHouses, asiaTimeZone, requestForRetro } from "./helpers.js";
-import 'core-js'
-import 'regenerator-runtime'
+// import "core-js";
+// import "regenerator-runtime";
 
 export let state = {
   // User:
@@ -80,15 +80,17 @@ export const calcProgressionDate = async function () {
       timezone: 5.5,
       settings: {
         observation_point: "topocentric" /* geocentric or topocentric */,
-        ayanamsha: "tropical" /*  tropical or sayana or lahiri  */,
+        ayanamsha: "lahiri" /*  tropical or sayana or lahiri  */,
         language: "en" /* en , te , es , fr , pt , ru , de ,  ja */,
       },
     };
+    console.log(requestBody);
     const data = await requestForRetro(requestBody);
-    //  if (!data.ok) {
+    console.log(data);
+    // if (!data.ok) {
     //   throw new Error(`Error: ${data.statusText}`);
-    //  }
-    // console.log(data);
+    // }
+
     state.progressionRetro = Object.entries(data.output)
       .filter(([planet, details]) => details.isRetro === "true" && planet !== "Ketu" && planet !== "Rahu")
       .map(([planet]) => planet);
@@ -203,10 +205,11 @@ export const generateComparisonTable = function (natalData, transitData, unknown
       NH2: unknownTime[0] ? "" : getHouse(cuspsNatal, planetsTransit[planet][0]),
     }));
 };
-import moment from 'moment-timezone'
+
 export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, uT = false) {
-  try { let planetPosition = new Array();
-     let cuspLongitudes = new Array();
+  try {
+    let planetPosition = new Array();
+    let cuspLongitudes = new Array();
     const geoData = await fetchCityCoordinates(cityName);
     if (geoData.length === 0) {
       throw new Error("City not found");
@@ -221,7 +224,7 @@ export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, 
     const timezoneData = await fetchTimezoneData(lat, lon);
     // const zoneID = timezoneData.timezoneId; // e.g. "Europe/Berlin"
     const zoneID = timezoneData.zoneName;
-    const zoneTime = moment.tz(dateString, FORMAT, zoneID);
+    const zoneTime = window.moment.tz(dateString, FORMAT, zoneID);
     // Japanese standart time (JST)
     const jstTime = asiaTimeZone(zoneTime);
     const localTime = zoneTime.format("YYYY-MM-DD HH:mm z").trim().split(" ").pop(); // next to time
@@ -232,7 +235,7 @@ export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, 
     const hour = jstTime.hour();
     const minute = jstTime.minute();
     // data for Chart
-     planetPosition = calPlanetPosition2(+year, +month, +day, +hour, +minute, +lon, +lat);
+    planetPosition = calPlanetPosition2(+year, +month, +day, +hour, +minute, +lon, +lat);
     cuspLongitudes = calHouseCusp2(
       +year,
       +month,
@@ -250,21 +253,19 @@ export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, 
       date: +day,
       hours: +hour,
       minutes: +minute,
-      seconds: 0,
+      seconds: +0,
       latitude: +lat,
       longitude: +lon,
       timezone: 5.5,
       settings: {
         observation_point: "topocentric" /* geocentric or topocentric */,
-        ayanamsha: "tropical" /*  tropical or sayana or lahiri  */,
+        ayanamsha: "lahiri" /*  tropical or sayana or lahiri  */,
         language: "en" /* en , te , es , fr , pt , ru , de ,  ja */,
       },
     };
+    console.log(requestBody);
     const data = await requestForRetro(requestBody);
-    // if (!data) {
-    //   console.log("retro not found");
-    // }
-    // console.log(data);
+    console.log(data);
     const retroData = Object.entries(data.output)
       .filter(([planet, details]) => details.isRetro === "true" && planet !== "Ketu" && planet !== "Rahu")
       .map(([planet]) => planet);

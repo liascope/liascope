@@ -1,7 +1,7 @@
 // prettier-ignore
 import { symbols, aspectSymbols, maxRows, houseSystems, defaultTime, dignity, perfectionHouseDescriptions, perfectionSignDescriptions,} from "./config.js";
-import 'core-js'
-import 'regenerator-runtime'
+// import 'core-js'
+// import 'regenerator-runtime'
 
 class View {
   #natalList = document.querySelector(".natalDate");
