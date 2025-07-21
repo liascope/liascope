@@ -60,7 +60,6 @@ js_astro (astsakai) – Used for calculating the degrees of cusps and planets. A
 
 License: MIT License
 
-Make sure to check the respective documentation for detailed licensing and usage information.
 
 Installation
 To get started with Liascope, follow these simple steps:
