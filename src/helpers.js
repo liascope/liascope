@@ -1,4 +1,5 @@
-import { zodiac, getLink, userName, apiKey, timeApiKey } from "./config.js";
+import { zodiac, getLink } from "./config.js";
+import { timeApiKey } from "./configKey.js";
 // Helper functions to send a POST request
 // import "core-js";
 // import "regenerator-runtime";
@@ -24,43 +25,10 @@ export const fetchCityCoordinates = async (cityName) => {
 export const fetchTimezoneData = async (lat, lon) => {
   const url = `${getLink.timezoneUrl}key=${timeApiKey}&format=json&by=position&lat=${lat}&lng=${lon}`;
 
-  // `${getLink.timezoneUrl}lat=${lat}&lng=${lon}&username=${userName}`;
+  // `${getLink.timezoneUrl}lat=${lat}&lng=${lon}&d=${d}`;
   return await fetchData(url, "Timezone data not found");
 };
 export const asiaTimeZone = (zT) => zT.clone().tz("Asia/Tokyo");
-
-export const requestForRetro = async (requestBody, retries = 3, delay = 15000) => {
-  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const response = await fetch(getLink.retroUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey,
-        },
-        body: JSON.stringify(requestBody, null, 2),
-        // JSON.stringify(requestBody),
-      });
-      if (response.status === 429 && attempt < retries) {
-        console.warn(`API Limit erreicht, neuer Versuch in ${delay / 2000} Sekunden...`);
-        await wait(delay);
-        delay *= 2; // Exponential Backoff
-        continue;
-      }
-      if (!response.ok) {
-        const errorText = await response.text(); // << NEU
-        throw new Error(`API Error: ${response.status} - ${errorText}`);
-        // throw new Error(`API Error: ${response.status} - ${response.statusText}`);
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.log(`Fehler (Versuch ${attempt}/${retries}):`, error);
-      if (attempt === retries) throw error;
-    }
-  }
-};
 
 // Find sign of planet by its degree
 export const findSign = (degree) => {

@@ -99,6 +99,7 @@ const controlUpdateState = async function () {
       controlList(model.state.progressionData, "4");
       controlList(model.state.draconicData, "5");
       controlListTransitAndNatal(model.state.natalData, model.state.transitData, model.state.unknownTime);
+
       // Retrogrades
       model.state.natalRetro = natalData.retroData;
       model.state.transitRetro = transitData.retroData;
@@ -106,7 +107,7 @@ const controlUpdateState = async function () {
       View.renderRetrogradeList(retroNatalandTransit, "2");
       View.renderRetrogradeList(natalData.retroData, "1");
       View.renderRetrogradeList(transitData.retroData, "3");
-      View.renderRetrogradeList(model.state.progressionRetro, "4");
+     View.renderRetrogradeList(model.state.progressionRetro, "4");
       View.renderRetrogradeList(natalData.retroData, "5");
     }
   } catch (error) {

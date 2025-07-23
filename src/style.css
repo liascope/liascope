@@ -9,10 +9,10 @@ html {
 #retroList {
   color: #ca400d;
   position: absolute;
-  left: -2rem;
+ left: -3rem;
   top: 0;
   width: fit-content;
-  scale: 0.8;
+  scale: 0.9;
 }
 
 .perfectionDescription {

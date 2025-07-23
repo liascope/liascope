@@ -106,20 +106,17 @@ function ChkPos(to, from){
 }
 
 
-function checkRetrograde(ye, mo, da, ho, mi){
+const checkRetrograde = function (ye, mo, da, ho, mi){
 	var pos0 = calPlanetPosition(ye, mo, da, ho, mi - 1, 48);
 	var pos1 = calPlanetPosition(ye, mo, da, ho, mi + 1, 48);
 	var ret  = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 	var vel  = 0.0;
-
 	for( var i = 1; i <= 10; i++ ){
-		vel = (pos1[i] - pos[i]) * 720.0;
+		vel = (pos1[i] - pos0[i]) * 720.0;
 		if(vel < 0.0) ret[i] = -1;
 	}
-
 	return ret;
 }
-
 
 function cnvSign( adeg ){
 	adeg = mod360(adeg);

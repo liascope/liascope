@@ -1,7 +1,7 @@
 // import moment from "https://cdn.skypack.dev/moment-timezone";
 // import moment from "moment-timezone";
 import { FORMAT, ASPECTS, perfectionDegrees, zodiac } from "./config.js";
-import { fetchCityCoordinates, fetchTimezoneData, findSign, findPlanetHouses, asiaTimeZone, requestForRetro } from "./helpers.js";
+import { fetchCityCoordinates, fetchTimezoneData, findSign, findPlanetHouses, asiaTimeZone} from "./helpers.js";
 // import "core-js";
 // import "regenerator-runtime";
 
@@ -58,42 +58,17 @@ export const calcProgressionDate = async function () {
     progressionDate.setDate(progressionDate.getDate() + years);
     state.age = years;
     const formattedProgressionDate = progressionDate.toLocaleDateString("de-DE");
+
+     // Retro for progression
     const [day, month, year] = formattedProgressionDate.split(".").map(Number);
-
-    // Retro for progression
     const [hour, minute] = state.birthtime.split(":").map(Number);
-    const geoData = await fetchCityCoordinates(state.birthplace);
-    if (geoData.length === 0) {
-      throw new Error("City not found");
-    }
-    const lat = geoData[0].lat;
-    const lon = geoData[0].lon;
-    const requestBody = {
-      year: +year,
-      month: +month,
-      date: +day,
-      hours: +hour,
-      minutes: +minute,
-      seconds: 0,
-      latitude: +lat,
-      longitude: +lon,
-      timezone: 5.5,
-      settings: {
-        observation_point: "topocentric" /* geocentric or topocentric */,
-        ayanamsha: "lahiri" /*  tropical or sayana or lahiri  */,
-        language: "en" /* en , te , es , fr , pt , ru , de ,  ja */,
-      },
-    };
-    console.log(requestBody);
-    const data = await requestForRetro(requestBody);
-    console.log(data);
-    // if (!data.ok) {
-    //   throw new Error(`Error: ${data.statusText}`);
-    // }
 
-    state.progressionRetro = Object.entries(data.output)
-      .filter(([planet, details]) => details.isRetro === "true" && planet !== "Ketu" && planet !== "Rahu")
-      .map(([planet]) => planet);
+ const retroPlanets = checkRetrograde(year, month, day, hour, minute)
+state.progressionRetro = [
+  'Mercury', 'Venus', 'Mars', 'Jupiter',
+  'Saturn', 'Uranus', 'Neptune', 'Pluto'
+].filter((_, i) => retroPlanets[i + 3] === -1);
+
     state.progressionData = await convertToJSTWithAPI(state.birthplace, `${formattedProgressionDate} ${state.birthtime}`, state.houseSystem);
     if (!state.progressionData) throw new Error("Progression could not be calculated");
 
@@ -246,75 +221,38 @@ export const convertToJSTWithAPI = async function (cityName, dateString, hSyst, 
       +lat,
       hSyst // Placidius, for Koch 2
     ).filter((value) => value !== null && value !== undefined && value !== "");
-    // retrodata
-    const requestBody = {
-      year: +year,
-      month: +month,
-      date: +day,
-      hours: +hour,
-      minutes: +minute,
-      seconds: +0,
-      latitude: +lat,
-      longitude: +lon,
-      timezone: 5.5,
-      settings: {
-        observation_point: "topocentric" /* geocentric or topocentric */,
-        ayanamsha: "lahiri" /*  tropical or sayana or lahiri  */,
-        language: "en" /* en , te , es , fr , pt , ru , de ,  ja */,
-      },
-    };
-    console.log(requestBody);
-    const data = await requestForRetro(requestBody);
-    console.log(data);
-    const retroData = Object.entries(data.output)
-      .filter(([planet, details]) => details.isRetro === "true" && planet !== "Ketu" && planet !== "Rahu")
-      .map(([planet]) => planet);
-    // console.log(retroData); // -> retro Planets
-    /////////////////////////////////////////////////////////////////
-    let positionData;
-    if (uT === true) {
-      positionData = {
-        planets: {
-          Sun: [Math.round(planetPosition[1])],
-          Moon: [Math.round(planetPosition[2])],
-          Mercury: [Math.round(planetPosition[3])],
-          Venus: [Math.round(planetPosition[4])],
-          Mars: [Math.round(planetPosition[5])],
-          Jupiter: [Math.round(planetPosition[6])],
-          Saturn: [Math.round(planetPosition[7])],
-          Uranus: [Math.round(planetPosition[8])],
-          Neptune: [Math.round(planetPosition[9])],
-          Pluto: [Math.round(planetPosition[10])],
-          NNode: [Math.round(planetPosition[11])],
-          SNode: [Math.round(planetPosition[11] - 180)],
-          Lilith: [Math.round(planetPosition[12])],
-          // As: [planetPosition[13]],
-          // Mc: [planetPosition[14]],
-        },
-        cusps: cuspLongitudes,
-      };
-    } else {
-      positionData = {
-        planets: {
-          Sun: [Math.round(planetPosition[1])],
-          Moon: [Math.round(planetPosition[2])],
-          Mercury: [Math.round(planetPosition[3])],
-          Venus: [Math.round(planetPosition[4])],
-          Mars: [Math.round(planetPosition[5])],
-          Jupiter: [Math.round(planetPosition[6])],
-          Saturn: [Math.round(planetPosition[7])],
-          Uranus: [Math.round(planetPosition[8])],
-          Neptune: [Math.round(planetPosition[9])],
-          Pluto: [Math.round(planetPosition[10])],
-          NNode: [Math.round(planetPosition[11])],
-          SNode: [Math.round(planetPosition[11] - 180)],
-          Lilith: [Math.round(planetPosition[12])],
-          As: [Math.round(planetPosition[13])],
-          Mc: [Math.round(planetPosition[14])],
-        },
-        cusps: cuspLongitudes,
-      };
-    }
+
+    // retrograde
+ const retroPlanets = checkRetrograde(+year, +month, +day, +hour, +minute)
+const retroData = [
+  'Mercury', 'Venus', 'Mars', 'Jupiter',
+  'Saturn', 'Uranus', 'Neptune', 'Pluto'
+].filter((_, i) => retroPlanets[i + 3] === -1);
+
+ const planets = {
+  Sun: [Math.round(planetPosition[1])],
+  Moon: [Math.round(planetPosition[2])],
+  Mercury: [Math.round(planetPosition[3])],
+  Venus: [Math.round(planetPosition[4])],
+  Mars: [Math.round(planetPosition[5])],
+  Jupiter: [Math.round(planetPosition[6])],
+  Saturn: [Math.round(planetPosition[7])],
+  Uranus: [Math.round(planetPosition[8])],
+  Neptune: [Math.round(planetPosition[9])],
+  Pluto: [Math.round(planetPosition[10])],
+  NNode: [Math.round(planetPosition[11])],
+  SNode: [Math.round(planetPosition[11] - 180)],
+  Lilith: [Math.round(planetPosition[12])],
+};
+if (!uT) {
+  planets.As = [Math.round(planetPosition[13])];
+  planets.Mc = [Math.round(planetPosition[14])];
+}
+const positionData = {
+  planets,
+  cusps: cuspLongitudes,
+};
+    
     return { positionData, countryName, localTime, utcTime, retroData };
   } catch (error) {
     console.error(error.message);
