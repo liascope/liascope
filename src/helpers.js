@@ -1,5 +1,4 @@
-import { zodiac, getLink } from "./config.js";
-import { timeApiKey } from "./configKey.js";
+import { zodiac, getLink, timeApiKey } from "./config.js";
 // Helper functions to send a POST request
 // import "core-js";
 // import "regenerator-runtime";

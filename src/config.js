@@ -8,7 +8,7 @@ export const getLink = {
   timezoneUrl: "https://api.timezonedb.com/v2.1/get-time-zone?",
   //  "http://api.geonames.org/timezoneJSON?",
 };
-
+export const timeApiKey = "1SIV2C3L0GHD";
 export const FORMAT = "DD.MM.YYYY HH:mm";
 export const maxRows = 15;
 export const defaultTime = "12:00";
