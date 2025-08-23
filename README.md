@@ -67,7 +67,7 @@ To get started with Liascope, follow these simple steps:
 Clone this repository to your local machine:
 
 bash
-git clone https://github.com/liaakin/liascope.git  
+git clone https://github.com/liascope/liascope.git  
 Open the index.html file in your browser.
 
 Enjoy exploring your astrological insights!
