@@ -1,4 +1,4 @@
-Liascope
+
 Liascope is a JavaScript-based app that provides astrology enthusiasts with a user-friendly interface to explore their personal horoscope. Designed with the MVC (Model-View-Controller) pattern, it aims to offer easy-to-understand astrological insights for beginners. The app uses modern JavaScript features, such as ES6 syntax and Clean Code principles, to ensure maintainability and scalability.
 
 Features
