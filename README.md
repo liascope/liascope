@@ -1,84 +1,74 @@
+ Liascope Astrology – Vanilla JS 🌟
 
-Liascope is a JavaScript-based app that provides astrology enthusiasts with a user-friendly interface to explore their personal horoscope. Designed with the MVC (Model-View-Controller) pattern, it aims to offer easy-to-understand astrological insights for beginners. The app uses modern JavaScript features, such as ES6 syntax and Clean Code principles, to ensure maintainability and scalability.
+Liascope Astrology – Vanilla JS is a JavaScript-based horoscope app designed to provide astrology enthusiasts with a user-friendly interface for exploring personal charts. Built with the MVC (Model-View-Controller) pattern, it emphasizes maintainability, scalability, and clean code principles.
 
-Features
-Provides astrology insights using the positions of the planets, houses, and aspects.
+---
 
-Displays charts and allows users to explore their personal horoscope.
+ 🚀 Key Features
 
-Supports various astrological calculations, including retrograde planets and the true Moon Node.
+* Astrological Insights – Calculates positions of planets, houses, and aspects.
+* Interactive Charts – Explore personal horoscopes with visual charts.
+* Advanced Calculations – Handles retrograde planets, true Moon Node, and cusps.
+* Smooth Interactivity – Implements scrolling and responsive UI behavior.
+* Modular Codebase – Built with a clean and maintainable structure following MVC principles.
 
-Implements smooth scrolling behavior and interactive features.
+---
 
-Built with a clean, modular, and maintainable code structure.
+ 🏗️ Architecture
 
-Status
-The app is currently a work in progress. While the core functionality is implemented, there are still improvements to be made. Future updates will focus on enhancing the user experience and adding more features. These updates will include:
+* Model: Stores astrological data (planets, cusps, etc.) and handles calculations.
+* **View: Renders charts and user interface.
+* Controller: Manages user interactions and updates the view accordingly.
 
-Developing a responsive design to ensure the app works seamlessly on all devices.
+---
 
-Displaying current Moon phases to provide users with more astrological insights.
+ 🔧 Installation
 
-Adding explanations for the aspects, houses, and planetary positions to help users better understand their horoscope.
+1. Clone the repository:
 
-Architecture
-The app is built following the MVC (Model-View-Controller) pattern, which separates the logic of the application into three interconnected components:
+   ```bash
+   git clone https://github.com/liascope/liascope.git
+   ```
+2. Open `index.html` in your browser.
+3. Explore your horoscope insights!
 
-Model: Contains the data and business logic. For data storage, an object is used to manage the astrological data, such as the positions of the planets and other celestial bodies.
+---
 
-View: Handles the presentation layer, responsible for rendering the charts and user interface.
+ 🧩 Technologies Used
 
-Controller: Manages the interaction between the model and the view, coordinating user input and updating the view accordingly.
+* JavaScript (ES6)
+* HTML & CSS
+* APIs & Third-Party Libraries
 
-Technologies Used
-JavaScript (ES6)
+APIs and Libraries:
 
-HTML & CSS
+* Nominatim (OpenStreetMap) – city location calculations
+* TimeZoneDB – timezone calculations
+* AstroChart (AstroDraw) – SVG chart rendering
+* js\_astro (astsakai) – planetary and cusp calculations
 
-APIs and third-party libraries
+---
 
-APIs and Libraries Used
-This project utilizes the following open-source APIs and libraries:
+ 🧠 What I Learned & Demonstrated
 
-Nominatim (OpenStreetMap) – Used for city location calculations via nominatim.openstreetmap.org.
+* Implemented a vanilla JS app with a clean MVC architecture.
+* Applied modern JavaScript (ES6) and clean code principles.
+* Integrated multiple APIs and third-party libraries for astrology calculations and SVG chart rendering.
+* Designed an interactive and modular frontend ready for future upgrades.
 
-License: Data Policy
+---
 
-TimeZoneDB – Used for timezone calculations via timezonedb.com.
+ ⚡ Future Improvements
 
-License: TimeZoneDB Terms of Service
+* Responsive design for mobile devices.
+* Moon phase visualization and enhanced astrological insights.
+* Educational content explaining aspects, houses, and planetary positions.
 
-FreeAstrologyAPI – Used for retrograde planet calculations. Available at freeastrologyapi.com.
+---
 
-License: Custom license (check documentation on the site).
+ 📜 License & Acknowledgements
 
-AstroChart (AstroDraw) – Used for generating SVG charts. Available at astrodraw.github.io.
+* Licensed under MIT License – see LICENSE file for details.
+* Special thanks to the developers of the APIs and libraries used in this project.
+* Thanks to the open-source community for their ongoing contributions.
 
-License: MIT License
-
-js_astro (astsakai) – Used for calculating the degrees of cusps and planets. Available on GitHub at astsakai/js_astro.
-
-License: MIT License
-
-
-Installation
-To get started with Liascope, follow these simple steps:
-
-Clone this repository to your local machine:
-
-bash
-git clone https://github.com/liascope/liascope.git  
-Open the index.html file in your browser.
-
-Enjoy exploring your astrological insights!
-
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
-Contributing
-Feel free to open issues or submit pull requests if you find bugs or have suggestions for improvements. Your contributions are welcome!
-
-Acknowledgements
-Thanks to the developers of the APIs and libraries used in this project, which have made it possible to offer a seamless and interactive experience to users.
-
-Special thanks to the open-source community for their ongoing contributions!
