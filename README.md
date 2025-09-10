@@ -65,7 +65,7 @@ APIs and Libraries:
 * Educational content explaining aspects, houses, and planetary positions.
 
 ---
-
+©2025 Zeliha A. (liascope). All rights reserved. Open for personal use; redistribution or modification requires explicit permission.
  📜 License & Acknowledgements
 
 * Licensed under MIT License – see LICENSE file for details.
